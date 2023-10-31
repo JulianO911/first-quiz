@@ -13,23 +13,29 @@
 # need to be fixed. The test suite in `question1_test.py` will verify the output.
 # Read the test suite to know the values that these functions should return.
 
-def get_city_temperature(city):
-   if city == "Quito":
-      return 22
-   if city == "Sao Paulo":
-      return 17
-   if city == "San Francisco":
-      return 16
-
 def get_city_weather(city):
 
   sky_condition = None
-
-  if city == "Sao Paulo":
+  temperature = None
+  if city == "Quito":
+     sky_condition = "sunny"
+     temperature = 22
+  elif city == "Sao Paulo":
      sky_condition = "cloudy"
+     temperature = 17
   elif city == "New York":
      sky_condition = "rainy"
-
-  temperature = get_city_temperature(city)
+     temperature = 14
+  else:
+     return "ERROR. It is possible that we don't have weather info for this city or the data you'd provided is wrong."
 
   return str(temperature) + " degrees and " + sky_condition
+
+# Bugs founded:
+
+# 1. There's no sky condition if for the city Quito. SOLVED
+# 2. There's no temperature if for the city New York (It's for San Francisco instead) SOLVED
+# 3. New York temperature returns 16 (14 expected). SOLVED
+# 4. Program should return a message when the input data is a city that is not in the database or an invalid data. SOLVED
+# and new test cases added.
+# 5. I think it's better include all in one function, in order to optimize the code.
