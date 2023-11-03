@@ -25,9 +25,39 @@
 # The `alchemy_combine()` function will use your oven. You can see the expected 
 # formulas and their outputs in the test file, `question3_test.py`.
 
+class Oven:
+  
+  # The constructor adds a default database (wich is a dictionary) with outputs for the oven and initialize the ingredients and the output.
+  # Note: the lists are strings in order to make easy the hasheable access
+  def __init__(self):
+    self._possible_outputs = {str(["lead", "mercury"]):"gold",str(["water", "air"]):"snow",str(["cheese", "dough", "tomato"]):"pizza"}
+    self._current_items = []
+    self._output = None
+    
+  def add(self,item):
+    self._current_items.append(item)
+
+  # All the process methods (freeze,boil and wait) access to the outputs dictionary with the current items as a key.
+  # The result is stored on the output attribute.
+  def freeze(self):
+    self._output = self._possible_outputs[str(self._current_items)]
+
+  def boil(self):
+    self._output = self._possible_outputs[str(self._current_items)]
+
+  def wait(self):
+    self._output = self._possible_outputs[str(self._current_items)]
+
+  def get_output(self):
+    return self._output
+  
+  # Add new posible output 
+  def add_new_possible_output(self,ingredients,output):
+    self._possible_outputs[str(ingredients)] = output
+
 # This function should return an oven instance!
 def make_oven():
-  None
+  return Oven()
 
 def alchemy_combine(oven, ingredients, temperature):
   

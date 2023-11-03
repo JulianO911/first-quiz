@@ -1,3 +1,5 @@
+from question3 import make_oven,alchemy_combine
+
 def test_alchemy_combine():
 
   assert alchemy_combine(
@@ -5,13 +7,11 @@ def test_alchemy_combine():
     ["lead", "mercury"],
     5000
   ) == "gold"
-
   assert alchemy_combine(
     make_oven(),
     ["water", "air"],
     -100
   ) == "snow"
-
   assert alchemy_combine(
     make_oven(),
     ["cheese", "dough", "tomato"],
